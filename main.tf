@@ -1,5 +1,5 @@
 ################################################################################
-# credentials
+# generate random credentials
 resource "random_string" "rw_user" {
   length = 14
   special = false
@@ -51,6 +51,7 @@ locals {
 }
 
 ################################################################################
+# The ro+rw roles that users inherit from
 locals {
   db_rw_role = "${local.db_name}-rw-role"
   db_ro_role = "${local.db_name}-ro-role"
@@ -123,7 +124,6 @@ resource "postgresql_database" "db" {
 # https://aws.amazon.com/blogs/database/managing-postgresql-users-and-roles/
 # https://dba.stackexchange.com/questions/17790/created-user-can-access-all-databases-in-postgresql-without-any-grants
 # https://blog.dbrhino.com/locking-down-permissions-in-postgresql-and-redshift.html
-
 resource "null_resource" "db_setup" {
   provisioner "local-exec" {
 
