@@ -130,7 +130,7 @@ resource "null_resource" "db_setup" {
     command = <<END
 psql --command="
 ALTER SCHEMA public OWNER TO \"${local.db_rw_user}\";
---REVOKE ALL ON DATABASE \"${local.db_name}\" FROM public;
+REVOKE ALL ON DATABASE \"${local.db_name}\" FROM public;
 "
 END
 
