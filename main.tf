@@ -47,14 +47,14 @@ locals {
   db_rw_pass = "${random_string.rw_pass.result}"
   db_ro_user = "uro${random_string.ro_user.result}"
   db_ro_pass = "${random_string.ro_pass.result}"
-  db_name = "${var.database_name}-${random_string.dbsuffix.result}-db"
+  db_name = "${var.database_name_prefix}_${random_string.dbsuffix.result}_db"
 }
 
 ################################################################################
 # The ro+rw roles that users inherit from
 locals {
-  db_rw_role = "${local.db_name}-rw-role"
-  db_ro_role = "${local.db_name}-ro-role"
+  db_rw_role = "${local.db_name}_rw_role"
+  db_ro_role = "${local.db_name}_ro_role"
 }
 
 resource "postgresql_role" "rw" {

@@ -1,6 +1,6 @@
-variable "database_name" {
+variable "database_name_prefix" {
   type = "string"
-  description = "Name of database to be created"
+  description = "Name prefix of database to be created.  Actual database name will be returned in output."
 }
 
 variable "pg_host" {
@@ -11,6 +11,7 @@ variable "pg_host" {
 variable "pg_port" {
   type = "string"
   description = "Postgresql port"
+  default = "5432"
 }
 
 variable "pg_user" {
