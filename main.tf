@@ -32,14 +32,6 @@ resource "random_string" "ro_pass" {
   lower = true
 }
 
-resource "random_string" "dbsuffix" {
-  length = 8
-  special = false
-  number = true
-  upper = false
-  lower = true
-}
-
 locals {
   db_host = "${var.pg_host}"
   db_port = "${var.pg_port}"
@@ -47,7 +39,7 @@ locals {
   db_rw_pass = "${random_string.rw_pass.result}"
   db_ro_user = "uro${random_string.ro_user.result}"
   db_ro_pass = "${random_string.ro_pass.result}"
-  db_name = "${var.database_name_prefix}_${random_string.dbsuffix.result}_db"
+  db_name = "${var.database_name}"
 }
 
 ################################################################################

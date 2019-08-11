@@ -1,6 +1,6 @@
-variable "database_name_prefix" {
+variable "database_name" {
   type = "string"
-  description = "Name prefix of database to be created.  Actual database name will be returned in output."
+  description = "Name of database to be created."
 }
 
 variable "pg_host" {
